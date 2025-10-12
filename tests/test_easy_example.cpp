@@ -1,4 +1,4 @@
-// Copyright 2024 Marina Usova
+// Copyright 2025 Ekaterina P.
 
 #include <gtest/gtest.h>
 #include "../lib_easy_example/easy_example.h"
