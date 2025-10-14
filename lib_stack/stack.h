@@ -10,6 +10,7 @@ public:
 	void push(const T& val);
 	void pop();
 	T top() const; //вовзвращение элемента в конце стэка
+	T size() const; //необходимо для тестов
 	bool is_empty();
 	bool is_full();
 	void clear() noexcept;
