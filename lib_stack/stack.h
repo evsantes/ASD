@@ -1,8 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include <iostream>
-
 template <typename T>
 class Stack {
 	T* _data;
@@ -11,7 +9,7 @@ class Stack {
 public:
 	void push(const T& val);
 	void pop();
-	T top(); //вовзвращение элемента в конце стэка
+	T top() const; //вовзвращение элемента в конце стэка
 	bool is_empty();
 	bool is_full();
 	void clear() noexcept;
@@ -36,8 +34,7 @@ Stack<T>::Stack() : _data(nullptr), _size(0), _top(0) {} //список инициализации
 
 template<class T>
 void Stack<T>::push(const T& val) {
-	_top++;
-	_data[_top] = val;
+	_data[++_top] = val;
 }
 
 template<class T>
@@ -48,18 +45,18 @@ void Stack<T>::pop() {
 
 template<class T>
 bool Stack<T>::is_empty() {
-	return _top==0; //сравниваем
+	return _top == -1; //сравниваем
 }
 
 template<class T>
 bool Stack<T>::is_full() {
-	return _top == _size;
+	return _top == _size - 1;
 }
 
 template<class T>
 void Stack<T>::clear() noexcept{
 	_size = 0;
-	_top = 0; //присваиваем
+	_top = -1; //присваиваем
 }
 
 #endif
