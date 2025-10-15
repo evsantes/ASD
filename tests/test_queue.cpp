@@ -22,7 +22,7 @@ TEST(TestQueue, can_create_empty_queue) {
 	EXPECT_EQ(queue.size(), 0);
 }
 
-TEST(TestStack, can_pop_elements) {
+TEST(TestQueue, can_pop_elements) {
 	Queue<int> queue;
 	queue.push(1);
 	queue.push(2);
