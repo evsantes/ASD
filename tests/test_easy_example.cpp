@@ -2,145 +2,51 @@
 #include <iostream>
 #include <vector>
 #include <gtest/gtest.h>
-//#include "../lib_easy_example/easy_example.h"
-#include "../lib_stack/stack.h"
-#include "../lib_queue/queue.h"
+#include "../lib_easy_example/easy_example.h"
 using namespace std;
 
+#define EPSILON 0.000001
 
-TEST(TestStack, can_push_elements) {
-	Stack<int> stack;
-	stack.push(10);
-	EXPECT_FALSE(stack.is_empty());
-	EXPECT_EQ(stack.size(), 1);
-	stack.push(20);
-	stack.push(30);
-	EXPECT_EQ(stack.size(), 3);
+TEST(TestEasyExampleLib, can_div) {
+  // Arrange
+  int x = 10;
+  int y = 2;
+
+  // Act & Assert
+  ASSERT_NO_THROW(division(x, y));
 }
 
-TEST(TestStack, can_create_empty_stack) {
-	Stack<int> stack;
-	EXPECT_TRUE(stack.is_empty());
-	EXPECT_EQ(stack.size(), 0);
+TEST(TestEasyExampleLib, can_div_correctly) {
+    // Arrange
+    int x = 6;
+    int y = 2;
+
+    // Act
+    int actual_result = division(x, y);
+
+    // Assert
+    int expected_result = 3;
+    EXPECT_EQ(expected_result, actual_result);
 }
 
-TEST(TestStack, can_pop_elements) {
-	Stack<int> stack;
-	stack.push(1);
-	stack.push(2);
-	stack.push(3);
+TEST(TestEasyExampleLib, can_div_correctly_with_remainder) {
+    // Arrange
+    int x = 5;
+    int y = 4;
 
-	EXPECT_EQ(stack.pop(), 3); 
-	EXPECT_EQ(stack.pop(), 2);
-	EXPECT_EQ(stack.pop(), 1);
-	EXPECT_TRUE(stack.is_empty());
+    // Act
+    float actual_result = division(x, y);
+
+    // Assert
+    float expected_result = 1.25;
+    EXPECT_NEAR(expected_result, actual_result, EPSILON);
 }
 
-TEST(TestStack, top_element) {
-	Stack<int> stack;
-	stack.push(100);
-	EXPECT_EQ(stack.top(), 100);
+TEST(TestEasyExampleLib, throw_when_try_div_by_zero) {
+  // Arrange
+  int x = 10;
+  int y = 0;
 
-	stack.push(200);
-	EXPECT_EQ(stack.top(), 200);
+  // Act & Assert
+  ASSERT_ANY_THROW(division(x, y));
 }
-
-TEST(TestStack, can_clear_stack) {
-	Stack<int> stack;
-	stack.push(1);
-	stack.push(2);
-	stack.push(3);
-
-	stack.clear();
-	EXPECT_TRUE(stack.is_empty());
-	EXPECT_EQ(stack.size(), 0);
-}
-
-
-
-TEST(TestQueue, can_push_elements) {
-	Queue<int> queue;
-	queue.push(10);
-	EXPECT_FALSE(queue.is_empty());
-	EXPECT_EQ(queue.size(), 1);
-	queue.push(20);
-	queue.push(30);
-	EXPECT_EQ(queue.size(), 3);
-}
-
-TEST(TestQueue, can_create_empty_queue) {
-	Queue<int> queue;
-	EXPECT_TRUE(queue.is_empty());
-	EXPECT_EQ(queue.size(), 0);
-}
-
-TEST(TestStack, can_pop_elements) {
-	Queue<int> queue;
-	queue.push(1);
-	queue.push(2);
-	queue.push(3);
-
-	EXPECT_EQ(queue.pop(), 3);
-	EXPECT_EQ(queue.pop(), 2);
-	EXPECT_EQ(queue.pop(), 1);
-	EXPECT_TRUE(queue.is_empty());
-}
-
-TEST(TestQueue, can_clear_queue) {
-	Queue<int> queue;
-	queue.push(1);
-	queue.push(2);
-	queue.push(3);
-
-	queue.clear();
-	EXPECT_TRUE(queue.is_empty());
-	EXPECT_EQ(queue.size(), 0);
-}
-
-
-
-//#define EPSILON 0.000001
-//
-//TEST(TestEasyExampleLib, can_div) {
-//  // Arrange
-//  int x = 10;
-//  int y = 2;
-//
-//  // Act & Assert
-//  ASSERT_NO_THROW(division(x, y));
-//}
-//
-//TEST(TestEasyExampleLib, can_div_correctly) {
-//    // Arrange
-//    int x = 6;
-//    int y = 2;
-//
-//    // Act
-//    int actual_result = division(x, y);
-//
-//    // Assert
-//    int expected_result = 3;
-//    EXPECT_EQ(expected_result, actual_result);
-//}
-//
-//TEST(TestEasyExampleLib, can_div_correctly_with_remainder) {
-//    // Arrange
-//    int x = 5;
-//    int y = 4;
-//
-//    // Act
-//    float actual_result = division(x, y);
-//
-//    // Assert
-//    float expected_result = 1.25;
-//    EXPECT_NEAR(expected_result, actual_result, EPSILON);
-//}
-//
-//TEST(TestEasyExampleLib, throw_when_try_div_by_zero) {
-//  // Arrange
-//  int x = 10;
-//  int y = 0;
-//
-//  // Act & Assert
-//  ASSERT_ANY_THROW(division(x, y));
-//}
