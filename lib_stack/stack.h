@@ -17,6 +17,9 @@ public:
 	void clear() noexcept;
 	Stack(); //объ€вление функции
 	Stack(T* data, int size, int top); //конструктор инициализации
+	~Stack();
+	Stack& operator=(const Stack& other);
+	Stack(const Stack& other);
 };
 
 template<class T>
@@ -32,7 +35,34 @@ Stack<T>::Stack(T* data, int size, int top) {
 template<class T>
 Stack<T>::Stack() : _data(nullptr), _size(0), _top(0) {} //список инициализации
 
-//еще какие-нибудь конструкторы
+template<class T>
+Stack<T>::Stack(const Stack& other) : _capacity(other._capacity), _size(other._size) {
+	_data = new T[_capacity];
+	for (int i = 0; i < _size; i++) {
+		_data[i] = other._data[i];
+	}
+}
+
+template<class T>
+Stack<T>& Stack<T>::operator=(const Stack& other) {
+	if (this != &other) {
+		delete[] _data;
+
+		_capacity = other._capacity;
+		_size = other._size;
+
+		_data = new T[_capacity];
+		for (int i = 0; i < _size; i++) {
+			_data[i] = other._data[i];
+		}
+	}
+	return *this;
+}
+
+template<class T>
+Stack<T>:: ~Stack() {
+	delete[] _data;
+}
 
 template<class T>
 void Stack<T>::push(const T& val) {
