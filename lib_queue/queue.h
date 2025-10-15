@@ -13,6 +13,7 @@ public:
 	void push(const T& val);
 	void pop();
 	T head() const;
+	T size() const;
 	bool is_empty();
 	bool is_full();
 	void clear() noexcept;
