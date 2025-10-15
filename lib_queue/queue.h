@@ -8,12 +8,11 @@ class Queue {
 	int _head; //индекс начала очереди
 	int _tail; //индекс конца очереди
 	int _count; //количество?
-	//int _tail;
 public:
 	void push(const T& val);
 	void pop();
 	T head() const;
-	T size() const;
+	T size() const; //необходимо для тестов
 	bool is_empty();
 	bool is_full();
 	void clear() noexcept;
