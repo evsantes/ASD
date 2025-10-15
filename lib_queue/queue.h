@@ -18,6 +18,9 @@ public:
 	void clear() noexcept;
 	Queue(); //объявление функции
 	Queue(T* data, int head, int count, int tail, int size); //конструктор инициализации
+	~Queue();
+	Queue(const Queue& other);
+	Queue& operator=(const Queue& other);
 };
 
 template<class T>
@@ -34,7 +37,37 @@ Queue<T>::Queue(T* data, int head, int count, int tail, int size) {
 template<class T>
 Queue<T>::Queue() : _data(nullptr), _count(0), _head(0), _size(size), _tail(-1) {} //список инициализации
 
-//еще какие-нибудь конструкторы
+template<class T>
+Queue<T>::~Queue() {
+	delete[] _data;
+} //деструктор
+
+template<class T>
+Queue<T>::Queue(const Queue& other) : _size(other._size), _head(other._head),
+_tail(other._tail), _count(other._count) {
+	_data = new T[_size];
+	for (int i = 0; i < _size; i++) {
+		_data[i] = other._data[i];
+	}
+} //конструктор копирования
+
+template<class T>
+Queue<T>& Queue<T>::operator=(const Queue& other) {
+	if (this != &other) {
+		delete[] _data;
+
+		_size = other._size;
+		_head = other._head;
+		_tail = other._tail;
+		_count = other._count;
+
+		_data = new T[_size];
+		for (int i = 0; i < _size; i++) {
+			_data[i] = other._data[i];
+		}
+	}
+	return *this;
+}//оператор присваивания
 
 template<class T>
 void Queue<T>::push(const T& val) {
