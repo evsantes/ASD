@@ -43,15 +43,15 @@ TEST(TestLibLib, can_iterate) {
     auto end = list.end();
 
     EXPECT_TRUE(iter.operator!=(end)); //методы из итератора подключить к листу, но как?
-    EXPECT_EQ(iter.value(), 10);
+    EXPECT_EQ(iter.operator*(), 10);
 
     iter.operator++();
     EXPECT_TRUE(iter.operator!=(end));
-    EXPECT_EQ(iter.value(), 20);
+    EXPECT_EQ(iter.operator*(), 20);
 
     iter.operator++();
     EXPECT_TRUE(iter.operator!=(end));
-    EXPECT_EQ(iter.value(), 30);
+    EXPECT_EQ(iter.operator*(), 30);
 
     iter.operator++();
     EXPECT_FALSE(iter.operator!=(end));
@@ -60,7 +60,7 @@ TEST(TestLibLib, can_iterate) {
     int sum = 0;
     auto it = list.begin();
     while (it.operator!=(list.end())) {
-        sum += it.value();
+        sum += it.operator*();
         it.operator++();
     }
     EXPECT_EQ(sum, 60);

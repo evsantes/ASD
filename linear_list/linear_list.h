@@ -15,6 +15,8 @@ class List {
 
 public:
 	class Iterator {
+        Node<T>* current;
+    public:
 		Iterator() : current(_head) {}
 		Iterator(Node<T>*pos) : current(pos) {}
 		Iterator(const Iterator&other) : current(other.current) {}
@@ -49,10 +51,10 @@ public:
     void clear();
 
     Iterator begin() {
-        return Iterator;
+        return Iterator(_head);
     };
     Iterator end() {
-        return nullptr;
+        return Iterator(nullptr);
     };
 
 };
