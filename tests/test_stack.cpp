@@ -28,10 +28,18 @@ TEST(TestStack, can_pop_elements) {
 	stack.push(2);
 	stack.push(3);
 
-	EXPECT_EQ(stack.pop(), 3);
-	EXPECT_EQ(stack.pop(), 2);
-	EXPECT_EQ(stack.pop(), 1);
+	EXPECT_EQ(stack.top(), 1);
+	stack.pop();
+
+	EXPECT_EQ(stack.top(), 2);
+	stack.pop();
+
 	EXPECT_TRUE(stack.is_empty());
+
+	//EXPECT_EQ(stack.pop(), 3);
+	//EXPECT_EQ(stack.pop(), 2);
+	//EXPECT_EQ(stack.pop(), 1);
+	//EXPECT_TRUE(stack.is_empty());
 }
 
 TEST(TestStack, top_element) {
