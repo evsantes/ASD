@@ -1,5 +1,5 @@
-#ifndef DSU_H_
-#define DSU_H_
+#ifndef DSU_H
+#define DSU_H
 
 template <class T>
 class DSU {
