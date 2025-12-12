@@ -10,7 +10,7 @@ class Stack {
 public:
 	void push(const T& val);
 	void pop();
-	T top() const; //вовзвращение элемента в конце стэка
+	T& top(); //вовзвращение элемента в конце стэка
 	T size() const; //необходимо для тестов
 	bool is_empty();
 	bool is_full();
@@ -89,6 +89,14 @@ template<class T>
 void Stack<T>::clear() noexcept{
 	_size = 0;
 	_top = -1; //присваиваем
+}
+
+template <class T>
+T& Stack<T>::top(){
+	if (is_empty()) {
+		throw logic_error("Stack is empty");
+	}
+	return _data[_top];
 }
 
 #endif

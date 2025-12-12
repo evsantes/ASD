@@ -1,5 +1,5 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 template <typename T>
 class Queue {
@@ -11,7 +11,7 @@ class Queue {
 public:
 	void push(const T& val);
 	void pop();
-	T head() const;
+	T& head();
 	T size() const; //необходимо для тестов
 	bool is_empty();
 	bool is_full();
@@ -35,7 +35,7 @@ Queue<T>::Queue(T* data, int head, int count, int tail, int size) {
 }
 
 template<class T>
-Queue<T>::Queue() : _data(nullptr), _count(0), _head(0), _size(size), _tail(-1) {} //список инициализации
+Queue<T>::Queue() : _data(nullptr), _count(0), _head(0), _size(_size), _tail(-1) {} //список инициализации
 
 template<class T>
 Queue<T>::~Queue() {
@@ -72,10 +72,10 @@ Queue<T>& Queue<T>::operator=(const Queue& other) {
 template<class T>
 void Queue<T>::push(const T& val) {
 	if (is_full()) {
-		throw logic_error("Queue is full!");
+		throw std::logic_error("Queue is full!");
 	}
 	_count++;
-	_data[(++_tail) % size] = val;
+	_data[(++_tail) % _size] = val;
 }
 
 template<class T>
@@ -103,6 +103,14 @@ void Queue<T>::clear() noexcept {
 	_count = 0;
 	_tail = -1;
 	_head = 0; //присваиваем
+}
+
+template<class T>
+T& Queue<T>::head(){
+	if (is_empty()) {
+		throw logic_error("Queue is empty");
+	}
+	return _data[_head];  // Это корректно!
 }
 
 #endif 
