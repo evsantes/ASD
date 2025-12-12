@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef LINEAR_LIST_H
+#define LINEAR_LIST_H
 
 template<class T>
 struct Node {
@@ -305,3 +306,4 @@ void List<T>::clear() {
     }
 }
 
+#endif
