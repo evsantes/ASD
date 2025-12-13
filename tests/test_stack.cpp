@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <gtest/gtest.h>
-#include "../lib_stack/stack.h"
+#include "stack.h"
 using namespace std;
 
 
