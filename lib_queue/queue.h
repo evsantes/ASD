@@ -110,7 +110,7 @@ T& Queue<T>::head(){
 	if (is_empty()) {
 		throw logic_error("Queue is empty");
 	}
-	return _data[_head];  // Это корректно!
+	return _data[_head];  
 }
 
 #endif 
