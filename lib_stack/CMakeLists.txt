@@ -1,1 +1,1 @@
-create_project_lib(Stack)
+create_project_lib(lib_stack)

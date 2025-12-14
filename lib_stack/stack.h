@@ -99,4 +99,9 @@ T& Stack<T>::top(){
 	return _data[_top];
 }
 
+template<class T>
+T Stack<T>::size() const {
+	return _size;
+}
+
 #endif

@@ -11,12 +11,13 @@ class Queue {
 public:
 	void push(const T& val);
 	void pop();
-	T& head();
+	T& top();
 	T size() const; //необходимо для тестов
+	T count() const;
 	bool is_empty();
 	bool is_full();
 	void clear() noexcept;
-	Queue(); //объявление функции
+	Queue(int size = 20); //объявление функции
 	Queue(T* data, int head, int count, int tail, int size); //конструктор инициализации
 	~Queue();
 	Queue(const Queue& other);
@@ -35,7 +36,9 @@ Queue<T>::Queue(T* data, int head, int count, int tail, int size) {
 }
 
 template<class T>
-Queue<T>::Queue() : _data(nullptr), _count(0), _head(0), _size(_size), _tail(-1) {} //список инициализации
+Queue<T>::Queue(int size) : _data(nullptr), _count(0), _head(0), _size(size), _tail(-1) {
+	_data = new T[_size];
+} //список инициализации
 
 template<class T>
 Queue<T>::~Queue() {
@@ -85,7 +88,7 @@ void Queue<T>::pop() {
 	}
 	//_data[_head] = NULL;
 	_count--;
-	head = (++head) % _size;
+	_head = (++_head) % _size;
 }
 
 template<class T>
@@ -106,11 +109,21 @@ void Queue<T>::clear() noexcept {
 }
 
 template<class T>
-T& Queue<T>::head(){
+T& Queue<T>::top(){
 	if (is_empty()) {
 		throw logic_error("Queue is empty");
 	}
 	return _data[_head];  
+}
+
+template<class T>
+T Queue<T>::size() const {
+	return _size;
+}
+
+template<class T>
+T Queue<T>::count() const {
+	return _count;
 }
 
 #endif 
